@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/crm-passenger-transportation/static/css/main.1f5070dc.css",
-    "main.js": "/crm-passenger-transportation/static/js/main.ab797568.js",
+    "main.js": "/crm-passenger-transportation/static/js/main.df717739.js",
     "static/media/phone-icon.png": "/crm-passenger-transportation/static/media/phone-icon.07c5f07412713d113a23.png",
     "static/media/Mont-Regular.ttf": "/crm-passenger-transportation/static/media/Mont-Regular.e797167c18f9897bb607.ttf",
     "static/media/Mont-SemiBold.ttf": "/crm-passenger-transportation/static/media/Mont-SemiBold.0b5e68ebb36ca4006e21.ttf",
@@ -22,10 +22,10 @@
     "static/media/user-logo.svg": "/crm-passenger-transportation/static/media/user-logo.bae8b272ea8a71f8e6a4cf2346fcc196.svg",
     "static/media/flag-logo.svg": "/crm-passenger-transportation/static/media/flag-logo.85ffa7e4b6fd8a602f280011db3050c2.svg",
     "main.1f5070dc.css.map": "/crm-passenger-transportation/static/css/main.1f5070dc.css.map",
-    "main.ab797568.js.map": "/crm-passenger-transportation/static/js/main.ab797568.js.map"
+    "main.df717739.js.map": "/crm-passenger-transportation/static/js/main.df717739.js.map"
   },
   "entrypoints": [
     "static/css/main.1f5070dc.css",
-    "static/js/main.ab797568.js"
+    "static/js/main.df717739.js"
   ]
 }
