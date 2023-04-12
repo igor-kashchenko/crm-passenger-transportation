@@ -1,0 +1,25 @@
+@font-face {
+  font-family: 'Mont';
+  src: url('./fonts/Mont-Bold.ttf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('./fonts/Mont-SemiBold.ttf');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('./fonts/Mont-Regular.ttf');
+  font-weight: normal;
+}
+
+body {
+  font-family: 'Mont', sans-serif !important;
+}
+
+.bg-green {
+  background-color: #d6efbf5c;
+}
