@@ -1,10 +1,31 @@
 {
   "files": {
-    "main.js": "/crm-passenger-transportation/static/js/main.23698b73.js",
+    "main.css": "/crm-passenger-transportation/static/css/main.1f5070dc.css",
+    "main.js": "/crm-passenger-transportation/static/js/main.ab797568.js",
+    "static/media/phone-icon.png": "/crm-passenger-transportation/static/media/phone-icon.07c5f07412713d113a23.png",
+    "static/media/Mont-Regular.ttf": "/crm-passenger-transportation/static/media/Mont-Regular.e797167c18f9897bb607.ttf",
+    "static/media/Mont-SemiBold.ttf": "/crm-passenger-transportation/static/media/Mont-SemiBold.0b5e68ebb36ca4006e21.ttf",
+    "static/media/Mont-Bold.ttf": "/crm-passenger-transportation/static/media/Mont-Bold.3675b597d3ffb2b75168.ttf",
+    "static/media/auth-background.png": "/crm-passenger-transportation/static/media/auth-background.6e2e223eaa4bc2877c9d.png",
+    "static/media/Google_Logo.png": "/crm-passenger-transportation/static/media/Google_Logo.89428c0663500e30e491.png",
+    "static/media/bus-logo.svg": "/crm-passenger-transportation/static/media/bus-logo.9968c1516ef094a4307d6f150ccbe0d1.svg",
+    "static/media/users-logo.svg": "/crm-passenger-transportation/static/media/users-logo.3c52b533759d102b714204aef3716011.svg",
+    "static/media/cog-logo.svg": "/crm-passenger-transportation/static/media/cog-logo.444a63cbad75efa80f420038e59f3fd3.svg",
+    "static/media/trip-logo.svg": "/crm-passenger-transportation/static/media/trip-logo.dfc9868e606537acc8f3bffd2af5570e.svg",
     "index.html": "/crm-passenger-transportation/index.html",
-    "main.23698b73.js.map": "/crm-passenger-transportation/static/js/main.23698b73.js.map"
+    "static/media/support-logo.svg": "/crm-passenger-transportation/static/media/support-logo.fb3d1fa956f66aba7ef2bc8745ec3c8b.svg",
+    "static/media/user-circle-logo.svg": "/crm-passenger-transportation/static/media/user-circle-logo.29afc75bc76868ea1fcba3ce40b199c5.svg",
+    "static/media/chat-logo.svg": "/crm-passenger-transportation/static/media/chat-logo.16796999545cb051714a698a578c7e45.svg",
+    "static/media/wallet-logo.svg": "/crm-passenger-transportation/static/media/wallet-logo.d5b746ce7523ea682d3ea1ae79ca4807.svg",
+    "static/media/home-logo.svg": "/crm-passenger-transportation/static/media/home-logo.8e2a1da02637cd48018125abcc48d38e.svg",
+    "static/media/logOut-logo.svg": "/crm-passenger-transportation/static/media/logOut-logo.dcc770c8fd24b0b4ead2cce47e0ff885.svg",
+    "static/media/user-logo.svg": "/crm-passenger-transportation/static/media/user-logo.bae8b272ea8a71f8e6a4cf2346fcc196.svg",
+    "static/media/flag-logo.svg": "/crm-passenger-transportation/static/media/flag-logo.85ffa7e4b6fd8a602f280011db3050c2.svg",
+    "main.1f5070dc.css.map": "/crm-passenger-transportation/static/css/main.1f5070dc.css.map",
+    "main.ab797568.js.map": "/crm-passenger-transportation/static/js/main.ab797568.js.map"
   },
   "entrypoints": [
-    "static/js/main.23698b73.js"
+    "static/css/main.1f5070dc.css",
+    "static/js/main.ab797568.js"
   ]
 }
