@@ -2,7 +2,7 @@
 
 CRM for passenger transportation designed to help you manage bookings, drivers, and trips. As an admin user, you have access to features that allow you to add, edit, and delete data within the system. This includes changing user roles, adding new trips, and deleting existing trips.
 
-Use admin access to experience all features available. Login by email: admin@mail.com, password: test1234.
+### Use admin access to experience all features available. Login by email: admin@mail.com, password: test1234.
 
 [DEMO LINK](https://igor-kashchenko.github.io/crm-passenger-transportation/)
 
