@@ -14,6 +14,8 @@ export const getErrorMessageFromFirebaseCode = (code: string): string  => {
       return "That email is already in use. Please try a different one.";
     case "auth/phone-number-already-exists":
       return "That phone number is already in use. Please try a different one.";
+    case "auth/account-exists-with-different-credential":
+      return "An account already exists with the same email address but different sign-in credentials. Please try signing in using a different method.";
     default:
       return "An error occurred. Please try again later.";
   }
