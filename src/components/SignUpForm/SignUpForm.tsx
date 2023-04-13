@@ -9,6 +9,7 @@ import {
   ADMIN_EMAIL,
   getErrorMessageFromFirebaseCode,
 } from "../../utils/utils";
+import { FirebaseErrorCode } from "../../types/AppTypes";
 
 export const SignUpForm: React.FC = () => {
   const [name, setName] = useState("");
@@ -20,8 +21,8 @@ export const SignUpForm: React.FC = () => {
 
   const usersRef = collection(db, "users");
 
-  const handleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSignUp = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
     try {
       const { user } = await createUserWithEmailAndPassword(
@@ -29,8 +30,13 @@ export const SignUpForm: React.FC = () => {
         email,
         password
       );
-      const userType = email === ADMIN_EMAIL ? "admin" : "user";
-      const role = userType === "admin" ? null : "passenger";
+      const userType = email === ADMIN_EMAIL
+        ? "admin"
+        : "user";
+
+      const role = userType === "admin"
+        ? null
+        : "passenger";
 
       const newUserDocRef = doc(usersRef, user.uid);
 
@@ -43,8 +49,10 @@ export const SignUpForm: React.FC = () => {
       });
 
       navigate("/home");
-    } catch (e: any) {
-      const errorMessage = getErrorMessageFromFirebaseCode(e.code) || e.message;
+    } catch (error: any) {
+      const errorCode = error.code as FirebaseErrorCode;
+      const errorMessage =
+        getErrorMessageFromFirebaseCode(errorCode) || error.message;
 
       setErrorMessage(errorMessage);
     }
@@ -63,7 +71,7 @@ export const SignUpForm: React.FC = () => {
           >
             <Form.Group controlId="formBasicName" className="mb-3">
               <Form.Control
-                onChange={(e) => setName(e.target.value)}
+                onChange={(event) => setName(event.target.value)}
                 value={name}
                 placeholder="Name"
                 pattern="[A-Za-z\s-]+"
@@ -76,7 +84,7 @@ export const SignUpForm: React.FC = () => {
 
             <Form.Group controlId="formBasicEmail" className="mb-3">
               <Form.Control
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(event) => setEmail(event.target.value)}
                 value={email}
                 type="email"
                 placeholder="Enter email"
@@ -86,7 +94,7 @@ export const SignUpForm: React.FC = () => {
 
             <Form.Group controlId="formBasicPassword" className="mb-3">
               <Form.Control
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(event) => setPassword(event.target.value)}
                 value={password}
                 type="password"
                 placeholder="Password"

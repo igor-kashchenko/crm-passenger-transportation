@@ -21,7 +21,9 @@ export const UserProfileContent: React.FC = () => {
           <Col xs={12} sm={2}>
             <div className="avatar-circle d-flex flex-column align-items-center">
               <img
-                src={hasPhoto ? user.photoURL : userCircleLogo}
+                src={hasPhoto
+                    ? user.photoURL
+                    : userCircleLogo}
                 alt="Profile"
                 className="rounded-circle"
                 style={{ width: "100px" }}
@@ -29,7 +31,9 @@ export const UserProfileContent: React.FC = () => {
 
               <p
                 className={`${
-                  isUserAdmin ? "bg-primary" : "bg-warning"
+                  isUserAdmin
+                    ? "bg-primary"
+                    : "bg-warning"
                 } mb-0 mt-1 px-2 rounded-5`}
               >
                 {userData?.userType}
@@ -45,9 +49,16 @@ export const UserProfileContent: React.FC = () => {
             <h4>{userData?.email}</h4>
             <p
               className={`
-              ${isUserPassenger ? "bg-success" : ""}
-              ${isUserManager ? "bg-info" : ""}
-              ${isUserDriver ? "bg-danger" : ""}
+              ${isUserPassenger
+                ? "bg-success"
+                : ""}
+              ${isUserManager
+                ? "bg-info"
+                : ""}
+              ${isUserDriver
+                ? "bg-danger"
+                : ""}
+
               px-2 rounded-5 text-white d-inline`}
             >
               {userData?.role}

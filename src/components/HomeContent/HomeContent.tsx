@@ -18,6 +18,7 @@ export const HomeContent: React.FC = () => {
               </ul>
             </Card.Body>
           </Card>
+
           <Card className="mt-3">
             <Card.Body>
               <h5>Upcoming Bookings</h5>
@@ -29,6 +30,7 @@ export const HomeContent: React.FC = () => {
               </ul>
             </Card.Body>
           </Card>
+
         </Col>
         <Col md={9}>
           <h1>Passenger Transportation CRM</h1>
@@ -39,6 +41,7 @@ export const HomeContent: React.FC = () => {
           </p>
           <h2>Recent Bookings</h2>
           <hr />
+          
           <table className="table">
             <thead>
               <tr>
@@ -69,6 +72,7 @@ export const HomeContent: React.FC = () => {
               </tr>
             </tbody>
           </table>
+
           <Card className="mt-3">
             <Card.Body>
               <h5>Recent Feedback</h5>

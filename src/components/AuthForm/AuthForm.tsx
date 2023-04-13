@@ -19,6 +19,7 @@ import {
   ADMIN_EMAIL,
   getErrorMessageFromFirebaseCode,
 } from "../../utils/utils";
+import { FirebaseErrorCode } from "../../types/AppTypes";
 
 export const AuthForm = () => {
   const [email, setEmail] = useState("");
@@ -29,16 +30,51 @@ export const AuthForm = () => {
 
   const usersRef = collection(db, "users");
 
-  const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSignIn = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
 
       navigate("/home");
     } catch (error: any) {
+      const errorCode = error.code as FirebaseErrorCode;
       const errorMessage =
-        getErrorMessageFromFirebaseCode(error.code) || error.message;
+        getErrorMessageFromFirebaseCode(errorCode) || error.message;
+
+      setErrorMessage(errorMessage);
+    }
+  };
+
+  const handleSignInWithProvider = async (provider: any) => {
+    try {
+      const { user } = await signInWithPopup(auth, provider);
+      const userRef = doc(usersRef, user.uid);
+      const userSnapshot = await getDoc(userRef);
+
+      const userType = user.email === ADMIN_EMAIL
+        ? "admin"
+        : "user";
+
+      const role = userType === "admin"
+        ? null
+        : "passenger";
+
+      if (!userSnapshot.exists()) {
+        await setDoc(userRef, {
+          userId: user.uid,
+          email: user.email,
+          name: user.displayName,
+          userType,
+          role,
+        });
+      }
+
+      navigate("/home");
+    } catch (error: any) {
+      const errorCode = error.code as FirebaseErrorCode;
+      const errorMessage =
+        getErrorMessageFromFirebaseCode(errorCode) || error.message;
 
       setErrorMessage(errorMessage);
     }
@@ -46,64 +82,15 @@ export const AuthForm = () => {
 
   const handleSignInWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
-
-    try {
-      const { user } = await signInWithPopup(auth, provider);
-      const userRef = doc(usersRef, user.uid);
-      const userSnapshot = await getDoc(userRef);
-
-      const userType = user.email === ADMIN_EMAIL ? "admin" : "user";
-      const role = userType === "admin" ? null : "passenger";
-
-      if (!userSnapshot.exists()) {
-        await setDoc(userRef, {
-          userId: user.uid,
-          email: user.email,
-          name: user.displayName,
-          userType,
-          role,
-        });
-      }
-
-      navigate("/home");
-    } catch (error: any) {
-      const errorMessage =
-        getErrorMessageFromFirebaseCode(error.code) || error.message;
-
-      setErrorMessage(errorMessage);
-    }
+    await handleSignInWithProvider(provider);
   };
 
   const handleSignInWithFacebook = async () => {
     const provider = new FacebookAuthProvider();
-
-    try {
-      const { user } = await signInWithPopup(auth, provider);
-      const userRef = doc(usersRef, user.uid);
-      const userSnapshot = await getDoc(userRef);
-
-      const userType = user.email === ADMIN_EMAIL ? "admin" : "user";
-      const role = userType === "admin" ? null : "passenger";
-
-      if (!userSnapshot.exists()) {
-        await setDoc(userRef, {
-          userId: user.uid,
-          email: user.email,
-          name: user.displayName,
-          userType,
-          role,
-        });
-      }
-
-      navigate("/home");
-    } catch (error: any) {
-      const errorMessage =
-        getErrorMessageFromFirebaseCode(error.code) || error.message;
-
-      setErrorMessage(errorMessage);
-    }
+    await handleSignInWithProvider(provider);
   };
 
+  
   const handlePhoneLogInRedirect = () => {
     navigate("phonelogin");
   };
@@ -133,7 +120,7 @@ export const AuthForm = () => {
           >
             <Form.Group controlId="formBasicEmail" className="mb-3">
               <Form.Control
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(event) => setEmail(event.target.value)}
                 value={email}
                 type="email"
                 placeholder="Enter email"
@@ -143,7 +130,7 @@ export const AuthForm = () => {
 
             <Form.Group controlId="formBasicPassword" className="mb-3">
               <Form.Control
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(event) => setPassword(event.target.value)}
                 value={password}
                 type="password"
                 pattern=".{8,}"

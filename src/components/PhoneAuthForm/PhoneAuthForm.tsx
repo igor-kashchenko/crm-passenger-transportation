@@ -7,6 +7,7 @@ import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { getErrorMessageFromFirebaseCode } from "../../utils/utils";
+import { FirebaseErrorCode } from "../../types/AppTypes";
 
 export const PhoneAuthForm: React.FC = () => {
   const [name, setName] = useState("");
@@ -41,8 +42,9 @@ export const PhoneAuthForm: React.FC = () => {
       );
       setConfirmationResult(confirmation);
     } catch (error: any) {
+      const errorCode = error.code as FirebaseErrorCode;
       const errorMessage =
-        getErrorMessageFromFirebaseCode(error.code) || error.message;
+        getErrorMessageFromFirebaseCode(errorCode) || error.message;
 
       setErrorMessage(errorMessage);
     } finally {
@@ -97,7 +99,7 @@ export const PhoneAuthForm: React.FC = () => {
           >
             <Form.Group controlId="formBasicName" className="mb-3">
               <Form.Control
-                onChange={(e) => setName(e.target.value)}
+                onChange={(event) => setName(event.target.value)}
                 value={name}
                 placeholder="Name"
                 pattern="[A-Za-z\s-]+"

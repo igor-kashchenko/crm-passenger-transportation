@@ -34,4 +34,15 @@ export type TripFormData = {
   manager: string;
   passengers: number;
   id?: string;
-}
+};
+
+export enum FirebaseErrorCode {
+  UserNotFound = "auth/user-not-found",
+  WrongPassword = "auth/wrong-password",
+  TooManyRequests = "auth/too-many-requests",
+  ArgumentError = "auth/argument-error",
+  NetworkRequestFailed = "auth/network-request-failed",
+  EmailAlreadyInUse = "auth/email-already-in-use",
+  PhoneNumberAlreadyExists = "auth/phone-number-already-exists",
+  AccountExistsWithDifferentCredential = "auth/account-exists-with-different-credential"
+};

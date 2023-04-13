@@ -1,20 +1,22 @@
+import { FirebaseErrorCode } from "../types/AppTypes";
+
 export const getErrorMessageFromFirebaseCode = (code: string): string  => {
   switch (code) {
-    case "auth/user-not-found":
+    case FirebaseErrorCode.UserNotFound:
       return "The email or password you entered is incorrect. Please try again.";
-    case "auth/wrong-password":
+    case FirebaseErrorCode.WrongPassword:
       return "The email or password you entered is incorrect. Please try again.";
-    case "auth/too-many-requests":
+    case FirebaseErrorCode.TooManyRequests:
       return "We have detected too many requests from this device. Please try again later.";
-    case "auth/argument-error":
+    case FirebaseErrorCode.ArgumentError:
       return "There was an error with the provided argument. Please check your input and try again.";
-    case "auth/network-request-failed":
+    case FirebaseErrorCode.NetworkRequestFailed:
       return "There was an error connecting to the network. Please check your internet connection and try again.";
-    case "auth/email-already-in-use":
+    case FirebaseErrorCode.EmailAlreadyInUse:
       return "That email is already in use. Please try a different one.";
-    case "auth/phone-number-already-exists":
+    case FirebaseErrorCode.PhoneNumberAlreadyExists:
       return "That phone number is already in use. Please try a different one.";
-    case "auth/account-exists-with-different-credential":
+    case FirebaseErrorCode.AccountExistsWithDifferentCredential:
       return "An account already exists with the same email address but different sign-in credentials. Please try signing in using a different method.";
     default:
       return "An error occurred. Please try again later.";

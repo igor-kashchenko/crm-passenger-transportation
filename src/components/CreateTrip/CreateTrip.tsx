@@ -28,7 +28,7 @@ export const CreateTrip: React.FC = () => {
         const usersSnapshot = await getDocs(usersRef);
         const usersData = usersSnapshot.docs
           .map((doc) => ({ ...(doc.data() as User) }))
-          .filter((u) => u.userId !== user?.uid);
+          .filter((dbUser) => dbUser.userId !== user?.uid);
 
         setUsers(usersData);
       } catch (error) {
@@ -77,8 +77,8 @@ export const CreateTrip: React.FC = () => {
                 title="XX1111XX"
                 value={formData.carNumber}
                 required
-                onChange={(e) =>
-                  setFormData({ ...formData, carNumber: e.target.value })
+                onChange={(event) =>
+                  setFormData({ ...formData, carNumber: event.target.value })
                 }
               />
             </Form.Group>
@@ -91,8 +91,8 @@ export const CreateTrip: React.FC = () => {
                 title="Only letters"
                 value={formData.from}
                 required
-                onChange={(e) =>
-                  setFormData({ ...formData, from: e.target.value })
+                onChange={(event) =>
+                  setFormData({ ...formData, from: event.target.value })
                 }
               />
             </Form.Group>
@@ -104,8 +104,8 @@ export const CreateTrip: React.FC = () => {
                 value={formData.to}
                 pattern="^[A-Za-z ]+$"
                 required
-                onChange={(e) =>
-                  setFormData({ ...formData, to: e.target.value })
+                onChange={(event) =>
+                  setFormData({ ...formData, to: event.target.value })
                 }
               />
             </Form.Group>
@@ -115,16 +115,16 @@ export const CreateTrip: React.FC = () => {
                 placeholder="Choose the Driver"
                 as="select"
                 value={formData.driver}
-                onChange={(e) =>
-                  setFormData({ ...formData, driver: e.target.value })
+                onChange={(event) =>
+                  setFormData({ ...formData, driver: event.target.value })
                 }
               >
                 <option value="">Select a driver</option>
                 {users
-                  .filter((u) => u.role === "driver")
-                  .map((u) => (
-                    <option key={u.userId} value={u.name}>
-                      {u.name}
+                  .filter((user) => user.role === "driver")
+                  .map((user) => (
+                    <option key={user.userId} value={user.name}>
+                      {user.name}
                     </option>
                   ))}
               </Form.Control>
@@ -135,16 +135,16 @@ export const CreateTrip: React.FC = () => {
                 placeholder="Choose the Manager"
                 as="select"
                 value={formData.manager}
-                onChange={(e) =>
-                  setFormData({ ...formData, manager: e.target.value })
+                onChange={(event) =>
+                  setFormData({ ...formData, manager: event.target.value })
                 }
               >
                 <option value="">Select a manager</option>
                 {users
-                  .filter((u) => u.role === "manager")
-                  .map((u) => (
-                    <option key={u.userId} value={u.name}>
-                      {u.name}
+                  .filter((user) => user.role === "manager")
+                  .map((user) => (
+                    <option key={user.userId} value={user.name}>
+                      {user.name}
                     </option>
                   ))}
               </Form.Control>
@@ -156,10 +156,10 @@ export const CreateTrip: React.FC = () => {
                 type="number"
                 value={formData.passengers}
                 required
-                onChange={(e) =>
+                onChange={(event) =>
                   setFormData({
                     ...formData,
-                    passengers: parseInt(e.target.value),
+                    passengers: parseInt(event.target.value),
                   })
                 }
               />

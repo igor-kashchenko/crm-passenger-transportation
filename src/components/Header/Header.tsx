@@ -20,8 +20,8 @@ export const Header: React.FC = () => {
       await signOut(auth);
 
       navigate("/");
-    } catch (e) {
-      console.error(e);
+    } catch (event) {
+      console.error(event);
     }
   };
 
@@ -41,7 +41,9 @@ export const Header: React.FC = () => {
       <Container className="d-flex align-items-center justify-content-end px-0 pe-2 m-0">
         <span
           className={`${
-            isUserAdmin ? "bg-primary" : "bg-warning"
+            isUserAdmin
+              ? "bg-primary"
+              : "bg-warning"
           } px-2 rounded-5 me-2`}
         >
           {userData?.userType}
@@ -52,7 +54,9 @@ export const Header: React.FC = () => {
           style={{ width: "30px", height: "30px" }}
         >
           <img
-            src={user?.photoURL ? user.photoURL : userCircleLogo}
+            src={user?.photoURL
+                ? user.photoURL
+                : userCircleLogo}
             alt="user circle logo"
             style={{ width: "100%", height: "100%", objectFit: "cover" }}
           />

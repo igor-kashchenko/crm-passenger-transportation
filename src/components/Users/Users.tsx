@@ -22,7 +22,7 @@ export const Users = () => {
         const usersData = usersSnapshot.docs
           .map((doc) => ({ ...(doc.data() as User) }))
           .filter(
-            (u) => u.userId !== user?.uid && !ADMINS_ID.includes(u.userId)
+            (dbUser) => dbUser.userId !== user?.uid && !ADMINS_ID.includes(dbUser.userId)
           );
 
         setUsers(usersData);
@@ -42,7 +42,9 @@ export const Users = () => {
       await updateDoc(userRef, { role: newRole });
 
       setUsers(
-        users.map((u) => (u.userId === userId ? { ...u, role: newRole } : u))
+        users.map((dbUser) => (dbUser.userId === userId
+          ? { ...dbUser, role: newRole }
+          : dbUser))
       );
 
       setToastMessage("User role updated successfully!");
@@ -98,9 +100,16 @@ export const Users = () => {
 
                   <span
                     className={`
-                      ${isUserPassenger ? "bg-success text-white" : ""}
-                      ${isUserManager ? "bg-info text-dark" : ""}
-                      ${isUserDriver ? "bg-danger text-white" : ""}
+                      ${isUserPassenger
+                        ? "bg-success text-white"
+                        : ""}
+                      ${isUserManager
+                        ? "bg-info text-dark"
+                        : ""}
+                      ${isUserDriver
+                        ? "bg-danger text-white"
+                        : ""}
+                        
                       px-2 rounded-5 me-2`}
                   >
                     {user.role}
